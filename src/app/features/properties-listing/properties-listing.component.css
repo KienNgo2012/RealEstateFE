@@ -1,0 +1,32 @@
+.form-group.EventChange {
+    display: flex;
+    flex-direction: column;
+}
+button.btn-search {
+    margin-left: 10px;
+    margin-top: 24px;
+    height: 30px;
+    background: #000;
+    border-radius: 5px;
+    color: white;
+    
+}
+button.btn-search:hover {
+    background: white;
+    color: black;
+}
+.box-shadow {
+    box-shadow: 0 2px 8px rgb(3 44 71 / 12%);
+}
+
+.box-search {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    display:flex; 
+    padding:5px;
+}
+.properties-detail{
+    text-decoration: none;
+    color: black ;
+}

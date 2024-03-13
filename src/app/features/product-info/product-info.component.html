@@ -1,0 +1,199 @@
+<div style="padding-bottom:10px;" id="du-an-moi">
+    <div class="container">
+        <div class="rows">
+            <div class="block_ct">
+                <div class="main_ct listTindang" id="SlideNoibat_18">
+                    <div class="section-title mb-0">
+                        <h2 style="font-size: 20px !important">Bất động sản mới nhất</h2>
+                    </div>
+                    <div class="swiper-wrapper" id="append_data">
+                        <div class="_1 col-md-6 col-xl-3 p-1 swiper-slide text-left" style="margin-top:10px;"
+                            *ngFor="let propertie of properties">
+                            <div class="card  loaitin_0 p-0" data-label="">
+                                <div class="card-body p-0 mt-0">
+                                    <a [routerLink]="['/properties', propertie.idProperties]" title={{propertie.title}}>
+                                        <div class="inner_td_bds w-m">
+                                            <figure>
+                                                <img class="lazyload swiper-lazy" src={{propertie.image}}
+                                                    alt={{propertie.title}} width="162" height="90">
+
+                                            </figure>
+                                            <div class="info_td_bds">
+                                                <strong>{{propertie.title}}</strong>
+
+                                            </div><!-- End .info_td_bds -->
+                                            <div class="info_td_bds">
+                                                <span class="text-dark" style="font-size: 15px;"> {{propertie.price | currency:'VND':'symbol':'1.0-0' }}
+                                                    - {{propertie.acreage}}
+                                                    m²</span>
+
+                                                <div class="address mb-2"><i class="fa fa-map-marker"></i>
+                                                    {{propertie.province}} </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-duan p-2 pb-4">
+    <div class="container">
+
+        <div class="section-title mb-0">
+            <h2 style="font-size: 20px !important">Bất động sản theo địa điểm</h2>
+        </div>
+
+        <div class="row pt-2">
+
+            <div class="col-md-6 col-12 Boxdiadiem Boxdiadiem_chinh">
+                <a [routerLink]="['/properties-listing']" class="imgAdress">
+                    <img class="lazy lazyload     b-loaded b-loaded" src="../../../assets/tphcm.png">
+                    <div class="title">
+                        TPHCM
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="row">
+                    <div class="col-md-6 col-6 Boxdiadiem" style="margin-bottom:25px;">
+                        <a [routerLink]="['/properties-listing']" class="imgAdress">
+                            <img class="lazy lazyload     b-loaded b-loaded"
+                                src="../../../assets/hanoi.jpeg">
+                            <div class="title">
+                                Hà Nội
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-6 Boxdiadiem" style="margin-bottom:25px;">
+                        <a [routerLink]="['/properties-listing']" class="imgAdress">
+                            <img class="lazy lazyload     b-loaded b-loaded"
+                                src="../../../assets/binhduong.jpeg">
+                            <div class="title">
+                                Bình Dương
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-6 Boxdiadiem">
+                        <a [routerLink]="['/properties-listing']" class="imgAdress">
+                            <img class="lazy lazyload     b-loaded b-loaded"
+                                src="../../../assets/dongnai.png">
+                            <div class="title">
+                                Đồng Nai
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-6 Boxdiadiem">
+                        <a [routerLink]="['/properties-listing']" class="imgAdress">
+                            <img class="lazy lazyload     b-loaded b-loaded"
+                                src="../../../assets/danang.jpeg">
+                            <div class="title">
+                                Đà Nẵng
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="p-2 pb-4 promo-section mt-3 v2" style="margin-bottom:30px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title mb-0">
+                    <h2 style="font-size: 20px !important">Lý do chọn đăng tin tại Bất Động Sản Online</h2>
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-12">
+                <div class="promo-desc">
+
+                    <div class="promo-text">
+
+                        <div style="font-size: 16px; text-align: justify;">
+                            <p dir="ltr">Lượng khách hàng <strong>Bất động sản</strong> tiềm năng truy cập cực cao, giao
+                                diện dễ sử dụng, chuyên viên tư vấn hỗ trợ 24/7 cùng với thông tin thị trường, cập
+                                nhật&nbsp;dự án bất động sản&nbsp;hàng ngày nhanh chóng chính xác. Chúng tôi tự tin khả
+                                năng tiếp cận giữa người đăng tin và khách hàng cao nên giao dịch sẽ nhanh chóng được
+                                thực hiện dựa trên định hướng đơn giản, hiệu quả, tiết kiệm,&nbsp;xác thực.
+                                <strong>Batdongsanonline.vn</strong> sẽ luôn là sự lựa chọn tin cậy cho bạn.</p>
+
+                            <ul>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 col-4">
+                            <div class="counter-text v2">
+                                <div class="box-count">
+                                    <h6 class="counter-value" data-from="0" data-to="1000" data-speed="5000">5000<span
+                                            class="plus">+</span></h6>
+                                </div>
+                                <p>Giao dịch </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-4">
+                            <div class="counter-text v2">
+                                <div class="box-count">
+                                    <h6 class="counter-value" data-from="0" data-to="585" data-speed="1000">1000<span
+                                            class="plus">+</span></h6>
+                                </div>
+                                <p> Yêu thích</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-4">
+                            <div class="counter-text v2">
+                                <div class="box-count">
+                                    <h6 class="counter-value" data-from="0" data-to="450" data-speed="965">965<span
+                                            class="plus">k</span></h6>
+                                </div>
+                                <p>lượt truy cập</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-7 col-lg-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="promo-content-wrap">
+                            <div class="promo-content" data-wow-delay="300ms">
+                                <img class="lazyload     b-loaded b-loaded" width="60" height="60" alt="..."
+                                    src="../../../assets/pin.png">
+                                <h4>Thông tin rõ ràng.</h4>
+                                <p>Dễ dàng tìm kiếm thông tin 1 cách chi tiết nhất</p>
+                            </div>
+                            <div class="promo-content bg-white" data-wow-delay="300ms">
+                                <img class="lazyload     b-loaded b-loaded" width="60" height="60" alt="..."
+                                    src="../../../assets/rent.png">
+                                <h4>Giao dịch dễ dàng.</h4>
+                                <p>Dễ dàng mua bán, trao đổi minh bạch.</p>
+                            </div>
+                            <div class="promo-content bg-white" data-wow-delay="300ms">
+                                <img class="lazyload     b-loaded b-loaded" width="60" height="60" alt="..."
+                                    src="../../../assets/customer_support.png">
+                                <h4>Hỗ trợ 24/7</h4>
+                                <p>Luôn hỗ trợ người dùng mọi lúc.</p>
+                            </div>
+                            <div class="promo-content" data-wow-delay="300ms">
+                                <img class="lazyload     b-loaded b-loaded" width="60" height="60" alt="..."
+                                    src="../../../assets/deal.png">
+                                <h4>Cam kết bảo mật.</h4>
+                                <p>Chúng tôi bảo mật mọi thông tin của khách hàng</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,195 @@
+<div class="col-md-8 col-12 form-form " style="margin-top:20px;margin-bottom:20px;">
+  <form [formGroup]="myForm" autocomplete="off" novalidate class="FormInputDangtin" (ngSubmit)="onUpload()" enctype="multipart/form-data">
+    <div class="container">
+      <div class="row">
+        <div class="NotloginDisable">
+          <div class="card">
+            <div class="card-body p-2">
+              <div>
+                <p style="font-size: 20px;">Thông tin cơ bản</p>
+              </div>
+              <div style="display:flex;">
+                <div class="form-group EventChange">
+                  <label for="category">Chọn hình thức mua bán <span class="required text-danger">(*)</span></label>
+                  <select id="category"  formControlName="category" style="width: 200px;margin-left:10px;  height: 30px;   border: var(--bs-border-width) solid var(--bs-border-color);">
+                    <option selected [value]="properties.category" >{{properties.category}}</option>
+                  </select>
+                </div>
+                <div *ngIf="myForm.get('category')?.hasError('required')" style="color: red;">
+                  category is required!
+                </div>
+
+                <div class="form-group EventChange" style="margin-left:50px;">
+                  <label>Loại Bất động sản <span class="required text-danger">(*)</span></label>
+                  <select  id="categoryDetail"  style="width: 200px;margin-left:10px;  height: 30px;   border: var(--bs-border-width) solid var(--bs-border-color);" formControlName="categoryDetail">
+                    <option selected [value]="properties.categoryDetail" >{{properties.categoryDetail}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row" style="margin-top:10px;">
+                <div style="display:flex;">
+                  <div>
+                    <label for="province">Tỉnh thành <span
+                      class="required text-danger">(*)</span></label>
+                    <select id="province" formControlName="province"   style="width: 200px;margin-left:10px;  height: 30px;   border: var(--bs-border-width) solid var(--bs-border-color);">
+                      <option selected [value]="properties.province">{{properties.province}}</option>
+                      <option *ngFor="let province of provincesList"
+                              [ngValue]="province.codename">
+                        {{province.name}}</option>
+                    </select>
+                  </div>
+                  <div style="margin-left:50px;">
+                    <label for="district">Quận/Huyện <span
+                      class="required text-danger">(*)</span></label>
+                    <select id="district" formControlName="district"  style="width: 200px;margin-left:10px;  height: 30px;   border: var(--bs-border-width) solid var(--bs-border-color);">
+                      <option [value]="properties.district">{{properties.district}}</option>
+                    </select>
+                  </div>
+
+
+                  <div style="margin-left:50px;">
+                    <label for="wards">Xã/Phường <span
+                      class="required text-danger">(*)</span></label>
+                    <select id="wards" formControlName="wards"  style="width: 200px;margin-left:10px;  height: 30px;   border: var(--bs-border-width) solid var(--bs-border-color);">
+                      <option selected [value]="properties.wards">{{properties.wards}}</option>
+                    </select>
+                  </div>
+                </div>
+
+
+                <div class="col-md-6 col-12">
+                  <label class="active">Số nhà/Tên đường <span
+                    class="required text-danger">(*)</span></label>
+                  <input id="houseNumber" formControlName="houseNumber" type="text"  class="form-control"
+                         [value]="properties.houseNumber"  name="diachi">
+                </div>
+                <div class="col-md-6 col-12 EventChange">
+                  <label>Trạng thái<span class="required text-danger">(*)</span></label>
+                  <select id="status" formControlName="status" name="wardid"
+                          class="form-control ChangeWard select2 select2-hidden-accessible" data-sl="0"
+                          tabindex="-1" aria-hidden="true">
+                    <option value="">Chọn Trạng thái</option>
+                    <option value="Mở bán">Mở bán</option>
+                    <option value="Đã bán">Đã bán</option>
+                  </select>
+                  <div *ngIf="myForm.get('status')?.hasError('required')" style="color: red;">
+                    Status is required!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="margin-top:20px;">
+            <div class="card-body p-2">
+              <div class="container">
+                <div class="row">
+                  <div class="col-12 p-0 pt-2">
+                    <p style="font-size: 20px;">Thông tin bài viết</p>
+                  </div>
+
+                  <div class="col-md-8 col-12 p-1">
+                    <label class="active">Tiêu đề <span
+                      class="required text-danger">(*)</span></label>
+                    <input id="title" formControlName="title" type="text"
+                           class="form-control" [value]="properties.title" placeholder="Tiêu đề tin đăng"
+                           name="title">
+                    <div *ngIf="myForm.get('title')?.hasError('required')" style="color: red;">
+                      Title is required!
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-12 col-12 form-group p-1">
+                    <label class="active">Nội dung <span
+                      class="required text-danger">(*)</span></label>
+                    <textarea id="description" formControlName="description" [value]="properties.description" class="form-control"
+                              placeholder="- Mô tả chi tiết về sản phẩm.
+- Lưu ý nội dung và tiêu đề có số điện thoại sẽ không được hiển thị.
+" name="noidung" style="height: 120px;" ></textarea>
+                    <div *ngIf="myForm.get('description')?.hasError('required')" style="color: red;">
+                      Content is required!
+                    </div>
+                  </div>
+                  <div class="form-group col-md-12 col-12 p-1">
+                    <label>Hình ảnh mô tả <span class="required text-danger">(*)</span></label>
+                  </div>
+                  <div class="anh-mo-ta">
+                    <div>
+                      <label for="fileInput" class="custom-file-upload">
+                        <input formControlName="imageFile" id="fileInput" type="file" (change)="onFileSelected($event)"
+                               accept="image/*" style="display: none;">
+                        <span>Chọn ảnh</span>
+                      </label>
+                    </div>
+                    <div id="image" style="margin-top:20px;">
+                      <img *ngIf="imagePreview" [src]="imagePreview" alt="Preview"
+                           style="height: 50%;width:50%;">
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card FormTienich" style="margin-top:20px;">
+            <div class="p-2 card-body">
+
+              <div class="row">
+                <div class="col-12 pt-2">
+                  <p style="font-size: 20px;">Thông tin bất động sản</p>
+                </div>
+                <div class="col-md-6 ">
+                  <label>Diện tích <span class="required text-danger">(*)</span></label>
+                  <div class="input-group mb-3">
+
+                    <input id="acreage" formControlName="acreage" [value]="properties.acreage" type="text"
+                           class="form-control text-right" value="0"
+                           placeholder="Diện tích (1000 or 2.5)" name="dientich">
+                    <div class="input-group-append CustomSelect2Search" style="margin-left:5px;">m²</div>
+
+                  </div>
+                  <div *ngIf="myForm.get('acreage')?.hasError('required')" style="color: red;">
+                    Acreage is required!
+                  </div>
+                  <div *ngIf="myForm.get('acreage')?.hasError('pattern')" style="color: red;">
+                    Please enter a valid number.
+                  </div>
+                </div>
+                <div class="col-md-6 ">
+                  <label>Giá <span class="required text-danger">(*)</span></label>
+                  <div class="input-group mb-3">
+
+                    <input id="price" formControlName="price" [value]="properties.price" type="text"
+                           class="form-control GiabanInput text-right"
+                           value="0" placeholder="Gía bán"
+                           name="gia">
+                    <div class="input-group-append CustomSelect2Search" style="margin-left:5px;">VND</div>
+
+                  </div>
+                  <div *ngIf="myForm.get('price')?.hasError('required')" style="color: red;">
+                    Price is required!
+                  </div>
+                  <div *ngIf="myForm.get('price')?.hasError('pattern')" style="color: red;">
+                    Please enter a valid number.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div></div>
+            <div class="container" style="margin-top:20px;">
+              <button type="submit" class="btn btn-success BtnSubmit" style="margin-right: 10px;">Update</button>
+              <button type="button" routerLink="../agent-properties" class="btn btn-success BtnSubmit" style="margin-right: 10px;">Cancle</button>
+              <button type="button" (click)="onClear()" class="btn btn-success BtnSubmit">Clear</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

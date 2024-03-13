@@ -1,0 +1,96 @@
+<div id="content" class="p-4 p-md-5 pt-5">
+    <h2 class="mb-4">List Transactions</h2>
+    <div class="">
+    <p-table
+      #dt
+      [value]="transactions"
+      dataKey="id"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [loading]="loading"
+      [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [globalFilterFields]="['username.name', 'phoneNumber', 'email', 'title', 'address', 'status']"
+      [tableStyle]="{ 'min-width': '75rem' }"
+      styleClass="p-datatable-sm"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex">
+                  <span class="p-input-icon-left ml-auto">
+                      <i class="pi pi-search"></i>
+                      <input pInputText type="text" [(ngModel)]="globalFilter" (input)="applyFilterGlobal($event, 'contains')" placeholder="Search keyword" />
+                  </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>User name</th>
+          <th>Phone number</th>
+          <th>Email</th>
+          <th>Title properties</th>
+          <th>Address</th>
+          <th>Status</th>
+        </tr>
+        <tr>
+          <th>
+            <p-columnFilter type="text" field="username"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="phoneNumber"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="email"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="title"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="address"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter field="status" matchMode="equals" [showMenu]="false">
+              <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                <p-dropdown [ngModel]="value" [options]="statuses" (onChange)="filter($event.value)" placeholder="Any" [showClear]="true">
+                  <ng-template let-option pTemplate="item">
+                    <p-tag [value]="option.value" [severity]="getSeverity(option.label)"></p-tag>
+                  </ng-template>
+                </p-dropdown>
+              </ng-template>
+            </p-columnFilter>
+          </th>
+         
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-transaction>
+        <tr>
+          <td>
+            <img alt="" src="{{ transaction.avatar }}" width="32" style="vertical-align: middle; width: 30px;  height: 30px; border-radius: 50%;" />
+            {{ transaction.username }}
+          </td>
+          <td>
+            {{ transaction.phoneNumber }}
+          </td>
+          <td>
+            {{ transaction.email }}
+          </td>
+          <td>
+            {{ transaction.title }}
+          </td>
+          <td>
+            {{ transaction.address }}
+          </td>
+          <td>
+            <p-tag [value]="transaction.status" [severity]="getSeverity(transaction.status)"></p-tag>
+          </td>
+          
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="5">No customers found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  </div>

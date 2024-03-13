@@ -1,0 +1,226 @@
+/* body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    padding: 50px 0;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+p {
+    font-size: 18px;
+    color: #333;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+/* CSS Animation */
+/* @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.animated {
+    animation: fadeIn 1s;
+} */ 
+body {
+    font-weight: 400;
+    color: rgb(51,51,51);
+    line-height: 18px;
+    text-size-adjust: 100%;
+    font-family: "roboto regular" !important;
+    font-size: 16px !important;
+}
+.pt-2, .py-2 {
+    padding-top: 0.5rem !important;
+}
+.container {
+    max-width: 1250px;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.ml-auto, .mx-auto {
+    margin-left: auto !important;
+}
+
+.mr-auto, .mx-auto {
+    margin-right: auto !important;
+}
+.mt-3, .my-3 {
+    margin-top: 1rem !important;
+}
+.position-relative {
+    position: relative !important;
+}.text-center {
+    text-align: center !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+.col-12 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.col-sm-6{
+    position: relative;
+    /* width: 100%; */
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.iconbox-style3 {
+    background-color: #fff;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    padding: 60px 35px 20px;
+    position: relative;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    transition: all .4s ease;
+}
+
+.text-center {
+    text-align: center !important;
+}
+.iconbox-style3 .icon {
+    margin-bottom: 25px;
+}
+.iconbox-style3 img {
+    max-height: 150px;
+}
+
+/* .w-100 {
+    width: 100% !important;
+} */
+img, embed {
+    vertical-align: middle;
+}
+
+img {
+    border: 0;
+    border-spacing: 0;
+}
+.iconbox-style3 .title {
+    margin-bottom: 12px;
+}
+
+.font-size-19 {
+    font-size: 19px !important;
+}
+.iconbox-style3 .text {
+    color: #181A20;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+p {
+    padding: 0 0 10px;
+}
+p {
+    margin-bottom: inherit !important;
+}
+.btn-thm3 {
+    background-color: #fff;
+    border: 1px solid #EB6753;
+    color: #EB6753;
+}
+
+.ud-btn {
+    border-radius: 12px;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 15px;
+    font-style: normal;
+    letter-spacing: 0em;
+    padding: 3px 24px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    z-index: 0;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    transition: all .4s ease;
+}
+a {
+    text-decoration: none;
+}
+h1 {
+    font-size: 1.6rem !important;
+    line-height: 35px !important;
+}
+p {
+    margin-bottom: inherit !important;
+}
+.iconbox-style3.active, .iconbox-style3:hover {
+    -webkit-box-shadow: 0 10px 40px rgba(24,26,32,0.05);
+    -moz-box-shadow: 0 10px 40px rgba(24,26,32,0.05);
+    -o-box-shadow: 0 10px 40px rgba(24,26,32,0.05);
+    box-shadow: 0 10px 40px rgba(24,26,32,0.05);
+}
+
+.iconbox-style3 {
+    background-color: #fff;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    padding: 60px 35px 20px;
+    position: relative;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    transition: all .4s ease;
+}
+.iconbox-style3:hover {
+    -webkit-box-shadow: 0 10px 40px rgba(24,26,32,0.05);
+    -moz-box-shadow: 0 10px 40px rgba(24,26,32,0.05);
+    -o-box-shadow: 0 10px 40px rgba(24,26,32,0.05);
+    box-shadow: 0 10px 40px rgba(24,26,32,0.05);
+}
+

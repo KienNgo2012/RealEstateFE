@@ -1,0 +1,126 @@
+<app-navbar></app-navbar>
+<div class="col-12 form-form " style="margin-top:20px;margin-bottom:20px;">
+  <form autocomplete="off" novalidate (ngSubmit)="searchProperties()" class="FormInputDangtin"
+    enctype="multipart/form-data">
+    <div class="container">
+      <div class="row">
+        <div class="NotloginDisable">
+          <div class="card">
+            <div class="card-body p-2 ">
+              <div class="box-shadow box-search ">
+                <div class="form-group EventChange">
+                  <label for="category">Chọn hình thức mua bán </label>
+                  <select id="category"
+                    style="width: 200px;  height: 30px;   border: var(--bs-border-width) solid var(--bs-border-color);"
+                    (change)="onChangeCategory($event)">
+                    <option selected value=""></option>
+                    <option *ngFor="let category of categoryList" [ngValue]="category.code">
+                      {{category.name}}</option>
+                  </select>
+                </div>
+
+                <div class="form-group EventChange" style="margin-left:10px;">
+                  <label>Loại Bất động sản </label>
+                  <select id="category"
+                    style="width: 170px; height: 30px;   border: var(--bs-border-width) solid var(--bs-border-color);"
+                    (change)="onChangeCategoryDetail($event)">
+                    <option selected value=""></option>
+                    <option *ngFor="let category of selectedCategoryList" [ngValue]="category.code">
+                      {{category.name}}</option>
+                  </select>
+                </div>
+
+                <div class="form-group EventChange" style="margin-left:10px;">
+                  <label for="province">Tỉnh thành</label>
+                  <select id="province"
+                    style="width: 200px; height: 30px;   border: var(--bs-border-width) solid var(--bs-border-color);"
+                    (change)="onChangeProvince($event)">
+                    <option selected value=""></option>
+                    <option *ngFor="let province of provincesList" [ngValue]="province.codename">
+                      {{province.name}}</option>
+                  </select>
+                </div>
+                <div class="form-group EventChange" style="margin-left:10px;">
+                  <label for="district">Quận/Huyện</label>
+                  <select id="district"
+                    style="width: 200px;  height: 30px;   border: var(--bs-border-width) solid var(--bs-border-color);"
+                    (change)="onChangeDistricts($event)">
+                    <option selected value=""></option>
+                    <option *ngFor="let districts of selectedprovincesList" [ngValue]="districts.codename">
+                      {{districts.name}}</option>
+                  </select>
+                </div>
+                <div class="form-group EventChange" style="margin-left:10px;">
+                  <label for="wards">Xã/Phường</label>
+                  <select id="wards"
+                    style="width: 200px; height: 30px;   border: var(--bs-border-width) solid var(--bs-border-color);"
+                    (change)="onChangeWards($event)">
+                    <option selected value=""></option>
+                    <ng-container *ngIf="selectedWardList && selectedWardList.length > 0">
+                      <option *ngFor="let ward of selectedWardList" [ngValue]="ward.codename">
+                        {{ ward.name }}
+                      </option>
+                    </ng-container>
+                  </select>
+                </div>
+                <button type="submit" class="btn-search">Tìm kiếm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div id="content" class=" container p-4 p-md-5 pt-5">
+    <p-dataView #dv [value]="propertiesList" filterBy="price" [rows]="10" [paginator]="true">
+      
+        <ng-template let-product pTemplate="listItem">
+          <a [routerLink]="['/properties', product.idProperties]" class="properties-detail" >
+          <div class="row"
+            style="padding-top: calc(var(--bs-gutter-x) * 0.5);padding-bottom: calc(var(--bs-gutter-x) * 0.5); border-bottom: 1px solid #d1d1d1;">
+            <div class="col-3">
+              <img class="img-thumbnail" [src]="product.image" [alt]="product.name" />
+            </div>
+            <div class="col-9">
+              <div>
+                <p class="h4">{{ product.title }}</p>
+              </div>
+              <div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <p>
+                    <i class="pi pi-compass"></i>
+                    <span> {{ product.province }}</span>
+                  </p>
+                </div>
+                <div class="col-3">
+                  <span class="flex align-items-center gap-2">
+                    <i class="pi pi-tag"></i>
+                    <span class="font-semibold"> {{ product.category }}</span>
+                  </span>
+                </div>
+                <div class="col-3">
+                  <p-tag [value]="product.status" [severity]="getSeverity(product)"></p-tag>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3" *ngIf="product.price !== undefined">
+                  <p>Giá: {{product.price | currency:'VND':'symbol':'1.0-0' }}</p>
+                </div>
+                <div class="col-3">
+                  <p>Diện tích: {{ product.acreage }} m²</p>
+                </div>
+                <div class="row">{{ product.description }}</div>
+              </div>
+            </div>
+          </div>
+          </a>
+        </ng-template>
+     
+    
+    </p-dataView>
+  </div>
+</div>
+
+<app-footer></app-footer>

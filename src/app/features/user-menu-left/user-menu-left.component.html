@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+<div>
+  <div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+      <div class="img bg-wrap text-center py-4" style="background-image: url(../../../assets/background.jpg);">
+        
+        <div class="user-logo">
+         
+          <div class="anh-mo-ta">
+            <div>
+                <label for="fileInput" class="custom-file-upload">
+                    <input id="fileInput" type="file" (change)="onFileSelected($event)"
+                        accept="image/*" style="display: none;">
+                    <span class="select-img">...</span>
+                </label>
+            </div>
+            <div style="margin-top:20px;">
+              <img *ngIf="imagePreview" [src]="imagePreview" alt="Preview" class="avatar-user"
+                    style="height: 50%;width:50%;">
+                <img *ngIf="!imagePreview && user?.avatar==null" class="avatar-user" src="../../../assets/avatar.jpg" alt="Preview"
+                    style="height: 50%;width:50%;"> 
+                <img *ngIf="!imagePreview && user?.avatar!=null"class="avatar-user" src={{user?.avatar}} alt="Preview"
+                style="height: 50%;width:50%;">
+            </div>
+        </div>
+          <h3>{{user?.fullname }}</h3>
+        </div>
+      </div>
+      
+      <ul class="list-unstyled components mb-5">
+        <li>
+          <a routerLink="./user-profile" routerLinkActive="activebutton" ariaCurrentWhenActive="page"><span class="fa fa-home mr-3"></span>Detail profile</a>
+        </li>
+        <li>
+          <a routerLink="./user-transaction" routerLinkActive="activebutton" ariaCurrentWhenActive="page"><span class="fa fa-gift mr-3"></span>Transaction history</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="content" style="width: 80%; float: right">
+      <router-outlet></router-outlet>
+    </div>
+</div>
+</div>
+<app-footer></app-footer>

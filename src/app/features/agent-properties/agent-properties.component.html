@@ -1,0 +1,64 @@
+<!--<app-navbar></app-navbar>-->
+
+<div id="content" class="p-4 p-md-5 pt-5">
+      <h2 class="mb-4">List Properties</h2>
+  <p-dataView #dv [value]="properties" filterBy="price" [rows]="5" [paginator]="true" [sortField]="selectedSort.field" [sortOrder]="selectedSort.order">
+    <ng-template pTemplate="header">
+      <div class="row">
+        <div class="col-3">
+          <p-dropdown [options]="sortOptions" [(ngModel)]="selectedSort" placeholder="Sort By Price" (onChange)="onSortChange({event: $event})" ></p-dropdown>
+        </div>
+        <div class="col-3">
+          <input pInputText [(ngModel)]="textSearch" type="text" (input)="onSearch()" placeholder="Search...">
+        </div>
+      </div>
+    </ng-template>
+    <ng-template let-product pTemplate="listItem">
+      <div class="row" style="padding-top: calc(var(--bs-gutter-x) * 0.5);padding-bottom: calc(var(--bs-gutter-x) * 0.5);" (click)="onRowClick(product)">
+        <div class="col-3 image-container">
+          <img class="img-thumbnail"  [src]="product.image" [alt]="product.name" />
+        </div>
+        <div class="col-9">
+          <div>
+            <p class="h4">{{ product.title }}</p>
+          </div>
+          <div>
+            <p>
+              <i class="pi pi-compass"></i>
+              <span> {{ product.province }}</span>
+            </p>
+          </div>
+          <div class="row">
+            <div class="col-3"  *ngIf="product.price !== undefined">
+              <p>Giá: {{product.price | currency:'VND':'symbol':'1.0-0' }}</p>
+            </div>
+            <div class="col-3">
+              <p>Diện tích: {{ product.acreage }} m²</p>
+            </div>
+            <div class="row">
+              <div class="col-3">
+                  <span class="flex align-items-center gap-2">
+                      <i class="pi pi-tag"></i>
+                      <span class="font-semibold"> {{ product.category }}</span>
+                  </span>
+              </div>
+              <div class="col-3">
+                <p-tag [value]="product.status" [severity]="getSeverity(product)"></p-tag>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <button type="button" (click)="onDeleteClick(product)" class="btn btn-danger float-end">Delete</button>
+          </div> 
+          <div>
+            <button type="button" (click)="onUpdateClick(product)" class="btn btn-warning float-end" style="margin-right: 10px;">Update</button>
+          </div>
+
+        </div>
+
+      </div>
+    </ng-template>
+  </p-dataView>
+</div>
+

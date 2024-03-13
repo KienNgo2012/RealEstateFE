@@ -1,0 +1,47 @@
+
+body {
+  min-height:100vh;
+  background-image: url(../../../assets/login-background.jpg);
+}
+
+.container-login100 {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.card-body {
+  flex: 1 1 auto;
+  color: var(--bs-card-color);
+  padding: 50px;
+}
+
+button.btn-login {
+  margin-top: 20px;
+}
+.bo1 {
+  border-bottom: 1px solid #999999;
+}
+
+.txt2 {
+  /* font-family: Poppins-Regular; */
+  font-size: 14px;
+  color: #999999;
+  line-height: 1.5;
+}
+a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}

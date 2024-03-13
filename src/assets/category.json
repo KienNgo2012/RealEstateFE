@@ -1,0 +1,66 @@
+[{
+ "code":"mua_ban",
+ "name":"Mua bán",
+ "categorydetail":[
+        {
+            "code":"ban_dat",
+            "name":"Bán đất"
+        },
+        {
+            "code":"ban_nha",
+            "name":"Bán nhà"
+        },
+        {
+            "code":"ban_biet_thu",
+            "name":"Bán biệt thự"
+        },
+        {
+            "code":"ban_chung_cu",
+            "name":"Bán chung cư"
+        },
+        {
+            "code":"ban_bat_dong_san_khac",
+            "name":"Bất động sản khác"
+        }  
+    ]
+},
+{
+    "code":"cho_thue",
+    "name":"Cho thuê",
+    "categorydetail":[
+           {
+               "code":"cho_thue_can_ho",
+               "name":"Cho thuê căn hộ"
+           },
+           {
+               "code":"cho_thue_biet_thu",
+               "name":"Cho thuê biệt thự"
+           },
+           {
+               "code":"cho_thue_nha",
+               "name":"Cho thuê nhà"
+           },
+           {
+               "code":"cho_thue_mat_bang",
+               "name":"Cho thuê mặt bằng"
+           },
+           {
+               "code":"cho_thue_phòng_tro",
+               "name":"Cho thuê phòng trọ"
+           },
+           {
+               "code":"cho_thue_van_phong",
+               "name":"Cho thuê văn phòng"
+           },
+           {
+               "code":"cho_thue_nha_xuong",
+               "name":"Cho thuê nhà xưởng"
+           },
+           {
+               "code":"cho_thue_khach_san",
+               "name":"Cho thuê khách sạn"
+           }  
+       ]
+   }
+
+]

@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    <h2>Update Role</h2>
+    <form [formGroup]="form" (ngSubmit)="Update()">
+        <div class="form-group">
+            <label for="rolecode">Role Type:</label>
+            <p-dropdown [options]="rolecodes" class="form-control" id="rolecode" formControlName="rolecode"
+                optionLabel="name" optionValue="code"></p-dropdown>
+        </div>
+        <div class="form-group">
+            <label for="username">ID:</label>
+            <input type="text" class="form-control" id="id" formControlName="id" value="{{data?.id}}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="username">User Name:</label>
+            <input type="text" class="form-control"  id="username" formControlName="username" value="{{data?.username}}"
+                readonly >
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="margin:10px 0;">Save Changes</button>
+        <button type="button" class="btn btn-primary" (click)="Close()" style="margin:10px 10px;">Close</button>
+    </form>
+</div>

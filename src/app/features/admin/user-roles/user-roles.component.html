@@ -1,0 +1,41 @@
+<div class="row p-md-5 pt-5">
+    <h1>User List</h1>
+    <div class="col-4" style="margin: 10px 10px;">
+        <input type="text" class="form-control" id="Name" [(ngModel)]="usernamesearch" (input)="Search()"
+            placeholder="Searching by user name" style="max-width: 300px" />
+    </div>
+
+    <p-table class="table-role" [value]="userroles" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[5, 20, 50]" styleClass="p-datatable-striped">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 50px;">Action</th>
+                <th>Username</th>
+                <th>Role Type</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Date Of Birth</th>
+                <th>Gender</th>
+                <th>Address</th>            
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-userrole let-rowIndex="rowIndex">
+            <tr>
+                <td>
+                    <a (click)="update(userrole)" class="btn btn-sm btn-outline-warning "><i
+                            class="pi pi-pencil"></i></a>
+                </td>
+                <td>{{ userrole.username }}</td>
+                <td>{{ userrole.rolecode }}</td>
+                <td>{{ userrole.fullname }}</td>
+                <td>{{ userrole.email }}</td>
+                <td>{{ userrole.phonenumber }}</td>
+                <td>{{ userrole.dateofbirth }}</td>
+                <td>{{ userrole.sex }}</td>
+                <td>{{ userrole.adress }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

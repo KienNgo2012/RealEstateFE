@@ -1,0 +1,110 @@
+<body class="container-login100">
+  <div class="card-container">
+    <div class="card card-login">
+      <div class="card-body">
+        <h1 class="card-title">Register</h1>
+  
+        <form autocomplete="off" novalidate (ngSubmit)="registerUser()">
+          <div class="row pb-2">
+            <label for="username" class="col-form-label col-sm-4">Username<span style="color:red">*</span></label>
+            <div class="col-md-8">
+              <input
+                type="text"
+                id="username"
+                name="username"
+                [(ngModel)]="user.username"
+                required
+                class="form-control"
+              />
+            </div>
+          </div>
+          
+          <div class="row pb-2">
+            <label for="fullname" class="col-form-label col-sm-4">Full name<span style="color:red">*</span></label>
+            <div class="col-md-8">
+              <input
+                type="text"
+                id="fullname"
+                name="fullname"
+                [(ngModel)]="user.fullname"
+                required
+                class="form-control"
+              />
+            </div>
+          </div>
+
+          <div class="row pb-2">
+            <label for="phoneNumber" class="col-form-label col-sm-4">Phone number<span style="color:red">*</span></label>
+            <div class="col-md-8">
+              <input
+                type="text"
+                id="phoneNumber"
+                name="phoneNumber"
+                [(ngModel)]="user.phoneNumber"
+                required
+                class="form-control"
+              />
+            </div>
+          </div>
+
+         
+
+          <div class="row pb-2">
+            <label for="email" class="col-form-label col-sm-4">Email<span style="color:red">*</span></label>
+            <div class="col-md-8">
+              <input
+                type="text"
+                id="email"
+                name="email"
+                [(ngModel)]="user.email"
+                required
+                class="form-control"
+              />
+            </div>
+          </div>
+
+          <div class="row pb-2">
+            <label for="passWord" class="col-form-label col-sm-4">Password<span style="color:red">*</span></label>
+            <div class="col-md-8">
+              <input
+                type="password"
+                id="passWord"
+                name="passWord"
+                [(ngModel)]="user.passWord"
+                required
+                class="form-control"
+              />
+            </div>
+          </div>
+
+          <div class="row pb-2">
+            <label for="confirmPassWord" class="col-form-label col-sm-4">Confirm password<span style="color:red">*</span></label>
+            <div class="col-md-8">
+              <input
+                type="password"
+                id="confirmPassWord"
+                name="confirmPassWord"
+                [(ngModel)]="user.confirmPassWord"
+                required
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div *ngIf="message" class="message pb-2" style="color: red;">
+            {{ message }}
+          </div>
+          <div class="row pb-2" >
+            <button type="submit" class="btn btn-outline-warning">Register now</button>
+          </div>
+          <div class="pb-2">
+            <span class="txt2"> Do you already have an account? </span> <a class="txt2 bo1" [routerLink]="['/login']">
+             Login now
+              </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+  

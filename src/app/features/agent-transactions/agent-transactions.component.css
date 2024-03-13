@@ -1,0 +1,26 @@
+.ml-auto {
+  margin-left: auto!important;
+}
+
+.flex {
+  display: flex!important;
+}
+.p-button.p-button-rounded {
+  border-radius: 2rem;
+}
+.confirm {
+
+  border-radius: 2rem;
+  margin: 0;
+  display: inline-flex;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  align-items: center;
+  vertical-align: bottom;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+

@@ -1,0 +1,113 @@
+<body>
+    <div class="user-profile-infor">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                    type="button" role="tab" aria-controls="profile" aria-selected="false">Thông tin chung</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="change-pass-tab" data-bs-toggle="tab" data-bs-target="#change-pass"
+                    type="button" role="tab" aria-controls="change-pass" aria-selected="false">Thay đổi mật
+                    khẩu</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <form method="post" (ngSubmit)="updateUser()" class="FormUpdate" enctype="multipart/form-data">
+                    <input type="hidden" name="update" value="1">
+                    <input type="hidden" name="userid" value="40041">
+                    <div class="card-body p-0">
+                        <div class="row ">
+                            <div>
+                                <table class="table table-user-information">
+                                    <tbody>
+                                        <tr>
+                                            <td>Họ và tên:</td>
+                                            <td><input type="text" [(ngModel)]="userProfile.Fullname"
+                                                    class="form-control" name="ten" value={{userProfile.Fullname}}></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Email:</td>
+                                            <td><input type="text" [(ngModel)]="userProfile.Email" class="form-control"
+                                                    name="email" value={{userProfile.Email}}></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Số điện thoại:</td>
+                                            <td><input type="text" [(ngModel)]="userProfile.PhoneNumber"
+                                                    class="form-control" name="PhoneNumber"
+                                                    value={{userProfile.PhoneNumber}}></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Địa chỉ:</td>
+                                            <td><input type="text" [(ngModel)]="userProfile.Adress" class="form-control"
+                                                    name="dc" value={{userProfile.Adress}}></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ngày sinh:</td>
+                                            <td><input type="text" [(ngModel)]="userProfile.DateOfBirth"
+                                                    class="form-control ngaysinh hasDatepicker" name="ngaysinh"
+                                                    value={{userProfile.DateOfBirth}}></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Giới tính:</td>
+                                            <td>
+                                                <select [(ngModel)]="userProfile.Sex" name="gioitinh"
+                                                    class="form-control">
+                                                    <option value="Nam">Nam</option>
+                                                    <option value="Nữ">Nữ</option>
+                                                    <option value="Khác">Khác</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <span class="pull-center">
+                                    <button type="submit" class="btn btn-success btn-update">Cập nhật</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="change-pass" role="tabpanel" aria-labelledby="change-pass-tab">
+                <form method="post" (ngSubmit)="changePassword()" class="FormUpdate" enctype="multipart/form-data">
+                    <input type="hidden" name="changepassword" value="1">
+                    <div class="card-body">
+                        <div class="row ">
+
+                            <div>
+                                <table class="table table-user-information">
+                                    <tbody>
+                                        <tr>
+                                            <td>Mật khẩu cũ của bạn <span style="color:red;">*</span>:</td>
+                                            <td><input type="password" [(ngModel)]="oldPassword"  required="" class="form-control"
+                                                    name="oldpassword"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mật khẩu mới <span style="color:red;">*</span>:</td>
+                                            <td><input type="password" [(ngModel)]="newPassword" required="" class="form-control"
+                                                    name="passwordnew" value=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nhập lại mật khẩu mới <span style="color:red;">*</span>:</td>
+                                            <td><input type="password" [(ngModel)]="confirmedPassword"  required="" class="form-control"
+                                                    name="repasswordnew" value=""></td>
+                                        </tr>
+                                       
+                                    </tbody>
+                                </table>
+                                <span class="pull-center">
+                                    <button type="submit" class="btn btn-success btn-update">Cập nhật</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

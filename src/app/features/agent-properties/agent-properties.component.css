@@ -1,0 +1,10 @@
+.image-container {
+  max-width: 357.8px; /* Đặt chiều rộng mong muốn */
+  max-height: 205.46px; /* Đặt chiều cao mong muốn */
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Tùy chọn, giữ nguyên tỷ lệ khung hình */
+}

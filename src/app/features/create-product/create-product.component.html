@@ -1,0 +1,182 @@
+<app-navbar></app-navbar>
+<div class="col-md-8 col-12 form-form " style="margin-top:20px;margin-bottom:20px;">
+    <form autocomplete="off" novalidate (ngSubmit)="onUpload()" class="FormInputDangtin" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                <div class="NotloginDisable">
+                    <div class="card">
+                        <div class="card-body p-2">
+                            <div>
+                                <p style="font-size: 20px;">Thông tin cơ bản</p>
+                            </div>
+                            <div style="display:flex;">
+                                <div class="form-group EventChange">
+                                    <label for="category">Chọn hình thức mua bán <span class="required text-danger">(*)</span></label>
+                                    <select id="category" style="width: 200px;margin-left:10px;  height: 30px;   border: var(--bs-border-width) solid var(--bs-border-color);" (change)="onChangeCategory($event)" >
+                                        <option selected value=""></option>
+                                        <option *ngFor="let category of categoryList"
+                                            [ngValue]="category.code">
+                                            {{category.name}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group EventChange" style="margin-left:50px;">
+                                    <label>Loại Bất động sản <span class="required text-danger">(*)</span></label>
+                                    <select id="category" style="width: 200px;margin-left:10px;  height: 30px;   border: var(--bs-border-width) solid var(--bs-border-color);" (change)="onChangeCategoryDetail($event)" >
+                                        <option selected value=""></option>
+                                        <option *ngFor="let category of selectedCategoryList"
+                                            [ngValue]="category.code">
+                                            {{category.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-top:10px;">
+                                <div style="display:flex;">
+                                    <div>
+                                        <label for="province">Tỉnh thành <span
+                                                class="required text-danger">(*)</span></label>
+                                        <select id="province" style="width: 200px;margin-left:10px;  height: 30px;   border: var(--bs-border-width) solid var(--bs-border-color);" (change)="onChangeProvince($event)" >
+                                            <option selected value=""></option>
+                                            <option *ngFor="let province of provincesList"
+                                                [ngValue]="province.codename">
+                                                {{province.name}}</option>
+                                        </select>
+                                    </div>
+                                    <div style="margin-left:50px;">
+                                        <label for="district">Quận/Huyện <span
+                                                class="required text-danger">(*)</span></label>
+                                        <select id="district" style="width: 200px;margin-left:10px;  height: 30px;   border: var(--bs-border-width) solid var(--bs-border-color);"
+                                            (change)="onChangeDistricts($event)">
+                                            <option selected value=""></option>
+                                            <option *ngFor="let districts of selectedprovincesList"
+                                                [ngValue]="districts.codename">{{districts.name}}</option>
+                                        </select>
+                                    </div>
+
+                                    <div style="margin-left:50px;">
+                                        <label for="wards">Xã/Phường <span
+                                                class="required text-danger">(*)</span></label>
+                                        <select id="wards" style="width: 200px;margin-left:10px;  height: 30px;   border: var(--bs-border-width) solid var(--bs-border-color);" (change)="onChangeWards($event)">
+                                            <option selected value=""></option>
+                                            <ng-container *ngIf="selectedWardList && selectedWardList.length > 0">
+                                                <option *ngFor="let ward of selectedWardList" [ngValue]="ward.codename">
+                                                    {{ ward.name }}
+                                                </option>
+                                            </ng-container>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-12">
+                                    <label class="active">Số nhà/Tên đường <span
+                                            class="required text-danger">(*)</span></label>
+                                    <input [(ngModel)]="properties.houseNumber" type="text" class="form-control"
+                                        value="" placeholder="123 Điện biên phủ" name="diachi">
+                                </div>
+                                <div class="col-md-6 col-12 EventChange">
+                                    <label>Trạng thái<span class="required text-danger">(*)</span></label>
+                                    <select [(ngModel)]="properties.status" name="wardid"
+                                        class="form-control ChangeWard select2 select2-hidden-accessible" data-sl="0"
+                                        tabindex="-1" aria-hidden="true">
+                                        <option value="">Chọn Trạng thái</option>
+                                        <option value="Mở bán">Mở bán</option>
+                                        <option value="Đã bán">Đã bán</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-top:20px;">
+                        <div class="card-body p-2">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12 p-0 pt-2">
+                                        <p style="font-size: 20px;">Thông tin bài viết</p>
+                                    </div>
+                                    <div class="col-md-8 col-12 p-1">
+                                        <label class="active">Tiêu đề <span
+                                                class="required text-danger">(*)</span></label>
+                                        <input type="text" [(ngModel)]="properties.title" minlength="30"
+                                            class="form-control" required="" value="" placeholder="Tiêu đề tin đăng"
+                                            name="title">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 col-12 form-group p-1">
+                                        <label class="active">Nội dung <span
+                                                class="required text-danger">(*)</span></label>
+                                        <textarea [(ngModel)]="properties.description" class="form-control" id="noidung"
+                                            placeholder="- Mô tả chi tiết về sản phẩm.
+- Lưu ý nội dung và tiêu đề có số điện thoại sẽ không được hiển thị.
+" name="noidung" style="height: 120px;" required=""></textarea>
+                                    </div>
+                                    <div class="form-group col-md-12 col-12 p-1">
+                                        <label>Hình ảnh mô tả <span class="required text-danger">(*)</span></label>
+                                    </div>
+                                    <div class="anh-mo-ta">
+                                        <div>
+                                            <label for="fileInput" class="custom-file-upload">
+                                                <input id="fileInput" type="file" (change)="onFileSelected($event)"
+                                                    accept="image/*" style="display: none;">
+                                                <span>Chọn ảnh</span>
+                                            </label>
+                                        </div>
+                                        <div style="margin-top:20px;">
+                                            <img *ngIf="imagePreview" [src]="imagePreview" alt="Preview"
+                                                style="height: 50%;width:50%;">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card FormTienich" style="margin-top:20px;">
+                        <div class="p-2 card-body">
+
+                            <div class="row">
+                                <div class="col-12 pt-2">
+                                    <p style="font-size: 20px;">Thông tin bất động sản</p>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <label>Diện tích <span class="required text-danger">(*)</span></label>
+                                    <div class="input-group mb-3">
+
+                                        <input [(ngModel)]="properties.acreage" type="number"
+                                            class="form-control text-right" required=""
+                                            placeholder="Diện tích (1000 or 2.5)" name="dientich">
+                                        <div class="input-group-append CustomSelect2Search" style="margin-left:5px;">
+                                            m²
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <label>Giá <span class="required text-danger">(*)</span></label>
+                                    <div class="input-group mb-3">
+
+                                        <input [(ngModel)]="properties.price" type="number"
+                                            class="form-control GiabanInput text-right"
+                                            placeholder="Giá bán "
+                                            name="gia">
+                                        <div class="input-group-append CustomSelect2Search" style="margin-left:5px;">
+                                            VND
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="container">
+                            <button type="submit" class="btn btn-success BtnSubmit">Đăng tin</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<app-footer></app-footer>

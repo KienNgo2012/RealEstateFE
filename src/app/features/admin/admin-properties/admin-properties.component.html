@@ -1,0 +1,38 @@
+<div class="row p-md-5 pt-5">
+    <h1>Transaction Management</h1>
+    <div class="col-4" style="margin: 10px 10px;">
+        <input type="text" class="form-control" id="Name" [(ngModel)]="textsearch" (input)="Search()"
+            placeholder="Searching by real estate name" style="max-width: 300px" />
+    </div>
+
+    <p-table class="table-role" [value]="propertiess" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[5, 20, 50]" styleClass="p-datatable-striped">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="min-width: 100px">Status</th> 
+                <th style="min-width: 300px">Real estate</th>
+                <th>Category</th>
+                <th style="min-width: 300px">Address</th>
+                <th>Acreage(m2)</th>
+                <!-- <th>Image</th> -->
+                <th>Price(VND)</th>
+                <th>Agent</th>
+                <th>Create Date</th>                            
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-properties let-rowIndex="rowIndex">
+            <tr>
+                <td><p-tag [value]="properties.status" [severity]="getSeverity(properties)"></p-tag></td>
+                <td>{{ properties.title }}</td>
+                <td>{{ properties.category +"\n"+ properties.categoryDetail }}</td>
+                <td>{{ properties.houseNumber + "," + properties.wards + "," +properties.district + "," +properties.province }}</td>
+                <td>{{ properties.acreage }}</td>
+                <!-- <td><img [src]="properties.image" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;"></td>               -->
+                <td>{{ properties.price | number: '1.0-0' }}</td>
+                <td>{{ properties.username }}</td>
+                <td>{{ properties.createDate }}</td>                       
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

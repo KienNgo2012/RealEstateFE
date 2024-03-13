@@ -1,0 +1,216 @@
+<app-navbar></app-navbar>
+<section class="wrap_inner1 transition-fade" style="margin-top:20px;">
+    <section class="container" id="container" style="margin-top: 0">
+        <div class="rows">
+            <div class="row" *ngFor="let propertie of propertiesdetail" >
+                <div class="col-md-8 col-12 product-detail">
+                    <h1 class="title_D">{{propertie.title}}</h1>
+                    <div class="info_D">
+                        <div style="color: #333;display: inline-flex;">Địa chỉ: <p class="Viethoa1"
+                                style="margin-left: 4px">{{propertie.houseNumber}}</p>
+                        </div>
+                    </div>
+                    <div class="jumpto-block pt-2">
+                        <div class=" clearfix sty_prod_D">
+                            <div id="galleryGrid" class="imgs-grid imgs-grid-5">
+                                <div class="imgs-grid-image">
+                                    <div class="image-wrap"><img src={{propertie.image}} alt="" title=""
+                                            style="top: -77px; height: 500px;width:800px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="jumpto-block1">
+                        <div class="f-detail f-detail-content1 clearfix sty_prod_D">{{propertie.description}}
+                        </div>
+                    </div>
+                    <div class="jumpto-block1 ListTienich">
+                        <h3 class="title mb-1 mt-2">Thông tin chi tiết</h3>
+                        <div id="tab-info">
+                            <ul class="listTienich">
+                                <li><span><img width="20" height="20" style="width:20px" class="icon    b-loaded"
+                                            src="https://batdongsanonline.vn/imgs/land//dac-diem.png">Diện tích</span>
+                                    <div class="text-right fr">{{propertie.acreage}} m²</div>
+                                </li>
+                                <li><span><img width="20" height="20" style="width:20px" class="icon    b-loaded"
+                                            src="https://batdongsanonline.vn/imgs/land//giay-ro.png"> Gía bán</span>
+                                    <div class="text-right fr"> {{propertie.price | currency:'VND':'symbol':'1.0-0' }} </div>
+                                </li>
+                                <li><span><img width="20" height="20" style="width:20px" class="icon    b-loaded"
+                                            src="https://batdongsanonline.vn/imgs/land//loai-hinh.png"> Trạng
+                                        thái</span>
+                                    <div class="text-right fr">{{propertie.status}}</div>
+                                </li>
+                                <li><span><img width="20" height="20" style="width:20px" class="icon    b-loaded"
+                                            src="https://batdongsanonline.vn/imgs/land//landscape.svg"> Ngày đăng
+                                    </span>
+                                    <div class="text-right fr">{{ propertie.createDate | date:'dd/MM/yyyy' }}</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div *ngIf="isUserAuthenticated" class="action-of-buyer" style="float: right;" >
+                            <button type="submit" class="btn btn-success" (click)="registerProperties(propertie.idProperties,propertie.idUser,propertie.price,'waiting support', propertie.status)">Tư vấn cho tôi</button>
+                            <button type="submit" class="btn btn-success" style="margin-left: 10px;" (click)="registerProperties(propertie.idProperties,propertie.idUser,propertie.price,'waiting confirm', propertie.status)">Đăng ký mua</button>
+                        </div>
+                    </div>
+
+
+                    <h3 class="title mb-1 mt-2">Lịch sử giao dịch thành công</h3>
+                    <div *ngFor="let transaction of transactiondetail">
+                        <div class="divide">&nbsp;</div>
+                        <div class=" m-0 row text-left">
+                            <div class="col-md-4 col-6 p-0">
+                                {{ transaction.date | date:'dd/MM/yyyy' }}
+                            </div>
+                            <div class="col-md-4 col-6 p-0">
+                            Id buyer: {{transaction.idBuyer}}
+                            </div>
+                            <div class="col-md-4 col-6 p-0">
+                                Price: {{transaction.price | currency:'VND':'symbol':'1.0-0' }} 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divide">&nbsp;</div>
+                    <h3 class="title mb-1 mt-2">Bình luận</h3>
+                    <form *ngIf="isUserAuthenticated"  (ngSubmit)="sendComment()">
+                        <div class="input-group">
+                            <input type="text" [(ngModel)]="comment" name="comment" class="form-control comment"
+                                placeholder="Comment">
+                            <div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="block_ct block_ct4" style="margin-top: 20px;">
+                        
+                      <div *ngFor="let comment of listComment">
+                        <div class="d-flex comment-list">
+                            <div class="img_cont_msg">
+                                <img src={{comment.avatar}}
+                                    class=" avatar-comment rounded-circle user_img_msg">
+                            </div>
+                            <div class="msg_cotainer comment-content">
+                                <div class="acc-comment">
+                                    {{comment.username}}
+                                </div>
+                                <div class="detail-comment">
+                                    {{comment.comment}}
+                                </div>
+                                <span class="msg_time">{{ comment.createDate | date:'dd/MM/yyyy' }}</span>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4 col-12 content-right ">
+                    <div id="undefined-sticky-wrapper" class="sticky-wrapper" style="height: 1335px;">
+                        <div class="sticky_right" style="width: 350px;">
+                            <style>
+                                .tagVerify {
+                                    align-items: center;
+                                    color: #fff;
+                                    display: flex;
+                                    font-size: 12px;
+                                    margin-top: -12px;
+                                    position: relative;
+                                    white-space: nowrap;
+                                }
+
+                                .tagVerify-icon {
+                                    align-items: center;
+                                    border-radius: 1px;
+                                    display: flex;
+                                    height: 24px;
+                                    justify-content: center;
+                                    width: 24px;
+                                    z-index: 1;
+                                }
+                            </style>
+
+                            <div class="block_sb d-none d-sm-block mb-2">
+                                <div class="our_sb">
+                                    <div class="title_search text-center">
+                                        <strong>LIÊN HỆ VỚI NGƯỜI ĐĂNG </strong>
+                                    </div>
+                                    <div class="main_sb">
+                                        <div class="our_list">
+                                            <div class="avt">
+                                                <div class="circle">
+                                                    <img class="lazy    b-loaded"
+                                                        src={{propertie.avatar}}>
+                                                </div>
+                                                <span class="name">{{propertie.username}}</span>
+                                                <span class="name">Email: {{propertie.email}}</span>
+                                                <span class="name">Phone: {{propertie.phoneNumber}}</span>
+                                            </div>
+                                            <div class="col-lg-24 Contact contact-info">
+                                                <a *ngIf="isUserAuthenticated" target="_blank" [routerLink]="['/messages']"  rel="nofollow" class="tag-sms">
+                                                    <svg _ngcontent-ng-c1703587457="" viewBox="0 0 24 24" width="20"
+                                                        height="20" fill="currentColor"
+                                                        class="x19dipnz x1lliihq x1k90msu x2h7rmj x1qfuztq"
+                                                        style="--color: var(--primary-icon);">
+                                                        <path _ngcontent-ng-c1703587457=""
+                                                            d="M.5 12C.5 5.649 5.649.5 12 .5S23.5 5.649 23.5 12 18.351 23.5 12 23.5c-1.922 0-3.736-.472-5.33-1.308a.63.63 0 0 0-.447-.069l-3.4.882a1.5 1.5 0 0 1-1.828-1.829l.882-3.4a.63.63 0 0 0-.07-.445A11.454 11.454 0 0 1 .5 12zm17.56-1.43a.819.819 0 0 0-1.125-1.167L14 11.499l-3.077-2.171a1.5 1.5 0 0 0-2.052.308l-2.93 3.793a.819.819 0 0 0 1.123 1.167L10 12.5l3.076 2.172a1.5 1.5 0 0 0 2.052-.308l2.931-3.793z">
+                                                        </path>
+                                                    </svg> Liên hệ {{propertie.username}}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <style>
+                                .sideBar-right h3 a {
+                                    color: #333;
+                                    font-size: 17px;
+                                }
+
+                                .ul_our_list li a h4 {
+                                    font-size: 15px !important;
+                                    font-weight: inherit !important;
+                                    line-height: 21px !important;
+                                }
+
+                                #menu_right a.showmore_menu {
+                                    text-align: center;
+                                    color: #ff0000;
+                                    font-size: 14px;
+                                    line-height: 28px;
+
+                                }
+
+                                .showmore_menu[data-type=full]:after {
+                                    content: "\f104";
+                                }
+
+                                .showmore_menu[data-type=limit]:after {
+                                    content: "\f105";
+                                }
+
+                                .showmore_menu[data-type=full]:after,
+                                .showmore_menu[data-type=limit]:after {
+                                    margin-left: auto;
+                                    display: inline-block;
+                                    font: normal normal normal 14px/1 FontAwesome;
+                                    font-size: inherit;
+                                    text-rendering: auto;
+                                    -webkit-font-smoothing: antialiased;
+                                    -moz-osx-font-smoothing: grayscale;
+                                    transform: rotate(-90deg);
+                                    transition: all .3s ease;
+                                    position: absolute;
+                                    margin-left: 5px;
+                                    line-height: 28px;
+                                }
+                            </style>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+<app-footer></app-footer>

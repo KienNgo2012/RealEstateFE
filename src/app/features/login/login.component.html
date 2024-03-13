@@ -1,0 +1,44 @@
+<body class="container-login100">
+  <div class="card-container">
+    <div class="card card-login">
+      <div class="card-body">
+        <h1 class="card-title">Login</h1>
+        <form autocomplete="off" novalidate (ngSubmit)="loginUser()">
+          <div class="row pb-2">
+            <label for="username" class="col-form-label col-sm-4">Username</label>
+            <div class="col-md-8">
+              <input type="text" id="username" name="username" [(ngModel)]="user.username" required
+                class="form-control" />
+            </div>
+          </div>
+          <div class="row">
+            <label for="password" class="col-form-label col-sm-4">Password</label>
+            <div class="col-md-8">
+              <input type="password" id="password" name="password" [(ngModel)]="user.password" required
+                class="form-control" />
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+            <!-- your.component.html -->
+            <form [formGroup]="aFormGroup">
+              <ngx-recaptcha2 #captchaElem
+                [siteKey]="siteKey"
+                formControlName="recaptcha">
+              </ngx-recaptcha2>
+            </form>
+            
+          </div>
+          <div class="row">
+            <button type="submit" class="btn btn-outline-warning btn-login">Login</button>
+          </div>
+          <div style="margin-top:10px;">
+            <span class="txt2"> Not a member? </span> <a class="txt2 bo1" [routerLink]="['/register']">
+              Sign up now
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
